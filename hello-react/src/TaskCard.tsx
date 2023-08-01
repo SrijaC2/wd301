@@ -6,18 +6,18 @@ const TaskCard =(props) =>{
         return (
 
             <div className="TaskItem bg-cyan-100">
-                <h2 className="text-xl font-bold">{props.task.title}</h2>
-                <p>Due on: {props.task.dueDate}</p>
-                <p>Assignee: {props.task.assigneeName}</p>
+                <h2 className="text-xl font-bold">{props.title}</h2>
+                <p>Due on: {props.dueDate}</p>
+                <p>Assignee: {props.assigneeName}</p>
             </div>
         )
     }else{
         return (
 
             <div className="TaskItem bg-cyan-100">
-                <h2 className="text-xl font-bold">{props.task.title}</h2>
-                <p>Completed on: {props.task.completedAtDate}</p>
-                <p>Assignee: {props.task.assigneeName}</p>
+                <h2 className="text-xl font-bold">{props.title}</h2>
+                <p>Completed on: {props.completedAtDate}</p>
+                <p>Assignee: {props.assigneeName}</p>
             </div>
         )
     }
