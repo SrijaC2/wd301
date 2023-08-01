@@ -2,7 +2,7 @@ import React from 'react'
 import './TaskCard.css'
 
 const TaskCard =(props) =>{
-    if (props.id=='0'){
+    if (props.completedAtDate==null){
         return (
 
             <div className="TaskItem bg-cyan-100">

@@ -50,13 +50,11 @@ function App() {
             title={Pending[0].title}
             dueDate={Pending[0].dueDate}
             assigneeName={Pending[0].assigneeName}
-            id="0"
           />
           <TaskCard 
           title={Pending[1].title}
           dueDate={Pending[1].dueDate}
           assigneeName={Pending[1].assigneeName}
-          id="0" 
           />
         </div>
         <div className="w-1/3 p-4 bg-sky-950 rounded">
@@ -65,13 +63,11 @@ function App() {
             title={doneTasks[0].title}
             completedAtDate={doneTasks[0].completedAtDate}
             assigneeName={doneTasks[0].assigneeName}
-            id="1"
           />
           <TaskCard
             title={doneTasks[1].title}
             completedAtDate={doneTasks[1].completedAtDate}
             assigneeName={doneTasks[1].assigneeName}
-            id="1"
           />
         </div>
       </div>
