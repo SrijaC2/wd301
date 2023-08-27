@@ -15,7 +15,7 @@ const Task = (props: TaskProp) => {
   return (
     <div className="TaskItem shadow-md border border-slate-100 bg-cyan-100 m-3">
       <a href={`/tasks/${props.id || ""}`}>
-        <h2 className="text-xl font-bold my-1">{props.title}</h2>
+        <h2 className="text-base font-bold my-1">{props.title}</h2>
       </a>
       <p className="text-sm text-slate-500">{props.dueDate}</p>
       <p className="text-sm text-slate-500">Description: {props.description}</p>
