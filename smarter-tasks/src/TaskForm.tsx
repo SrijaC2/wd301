@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TaskItem } from "./types";
 
 interface TaskFormProps {
@@ -6,6 +6,7 @@ interface TaskFormProps {
 }
 
 interface TaskFormState {
+    indexCounter: number,
     title: string;
     dueDate: string;
     description: string;
@@ -13,10 +14,28 @@ interface TaskFormState {
 
 const TaskForm = (props: TaskFormProps) => {
     const [formState, setFormState] = React.useState<TaskFormState>({
+        indexCounter: 1,
         title: "",
         description: "",
         dueDate: "",
     });
+
+
+    useEffect(() => {
+        const savedCounter = localStorage.getItem("taskIndexCounter");
+        if (savedCounter) {
+            setFormState((prevState) => ({
+                ...prevState,
+                indexCounter: parseInt(savedCounter),
+            }));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("taskIndexCounter", formState.indexCounter.toString());
+    }, [formState.indexCounter]);
+
+
     const titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         console.log(`${event.target.value}`);
         setFormState({ ...formState, title: event.target.value });
@@ -38,8 +57,24 @@ const TaskForm = (props: TaskFormProps) => {
         if (formState.title.length === 0 || formState.dueDate.length === 0) {
             return;
         }
-        props.addTask(formState);
-        setFormState({ title: "", description: "", dueDate: "" });
+        const newTask: TaskItem = {
+            id: formState.indexCounter.toString(),
+            title: formState.title,
+            description: formState.description,
+            dueDate: formState.dueDate,
+        };
+
+        props.addTask(newTask);
+        // console.log(formState)
+
+        setFormState((prevState) => ({
+            ...prevState,
+            indexCounter: prevState.indexCounter + 1,
+            title: "",
+            description: "",
+            dueDate: "",
+        }));
+
     };
 
     return (

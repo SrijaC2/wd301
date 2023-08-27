@@ -13,9 +13,12 @@ const TaskApp = () => {
   const [taskAppState, setTaskAppState] = useLocalStorage<TaskAppState>("tasks", {
     tasks: [],
   });
+  const [indexCounter, setIndexCounter] = useLocalStorage<number>("taskIndexCounter", 1);
 
   const addTask = (task: TaskItem) => {
-    setTaskAppState({ tasks: [...taskAppState.tasks, task] });
+    const newTask = { ...task, id: indexCounter.toString() };
+    setTaskAppState({ tasks: [...taskAppState.tasks, newTask] });
+    setIndexCounter(indexCounter + 1);
   };
 
   const tasksAfterDelete = (updatedTasks: TaskItem[]) => {
