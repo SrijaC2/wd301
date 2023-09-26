@@ -32,7 +32,7 @@ export default function MemberListItems() {
           >
             {user.name}
           </h5>
-          <p className="text-gray-600 dark:text-gray-400" id="email ID">
+          <p className="text-gray-600 dark:text-gray-400" id="email">
             Email: {user.email}
           </p>
           <button

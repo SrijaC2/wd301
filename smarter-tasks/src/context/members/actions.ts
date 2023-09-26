@@ -1,8 +1,6 @@
 import { API_ENDPOINT } from "../../config/constants";
-
 export const fetchUsers = async (dispatch: any) => {
   const token = localStorage.getItem("authToken") ?? "";
-
   try {
     dispatch({ type: "FETCH_USERS_REQUEST" });
     const response = await fetch(`${API_ENDPOINT}/users`, {
@@ -16,10 +14,12 @@ export const fetchUsers = async (dispatch: any) => {
     dispatch({ type: "FETCH_USERS_SUCCESS", payload: data });
   } catch (error) {
     console.log("Error fetching users:", error);
-    dispatch({ type: "FETCH_USERS_FAILURE", payload: "Unable to load users" });
+    dispatch({
+      type: "FETCH_USERS_FAILURE",
+      payload: "Unable to load users",
+    });
   }
 };
-
 export const addUser = async (dispatch: any, args: any) => {
   try {
     const token = localStorage.getItem("authToken") ?? "";
@@ -29,7 +29,6 @@ export const addUser = async (dispatch: any, args: any) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-
       body: JSON.stringify(args),
     });
     if (!response.ok) {

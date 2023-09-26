@@ -49,8 +49,8 @@ export const reducer = (
         isError: true,
         errorMessage: action.payload,
       };
-    case "ADD_USER_SUCCESS":
-      return { ...state, users: [...state.users, action.payload] };
+      case "ADD_USER_SUCCESS":
+        return { ...state, users: [...state.users, action.payload] };
     case "DELETE_USER_SUCCESS":
       return {
         ...state,
