@@ -86,34 +86,34 @@ const NewMember = () => {
                       <input
                         type="text"
                         id="name"
-                        placeholder="Enter member name..."
+                        placeholder="Enter name"
                         autoFocus
                         {...register("name", { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
                           errors.name ? "border-red-500" : ""
                         }`}
                       />
-                      {errors.name && <span>This field is required</span>}
                       <input
                         type="email"
                         id="email"
-                        placeholder="Enter email..."
+                        placeholder="Enter email"
+                        autoFocus
                         {...register("email", { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
                           errors.email ? "border-red-500" : ""
                         }`}
                       />
-                      {errors.email && <span>This field is required</span>}
                       <input
                         type="password"
                         id="password"
-                        placeholder="Enter password..."
+                        placeholder="Enter password"
+                        autoFocus
                         {...register("password", { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
                           errors.password ? "border-red-500" : ""
                         }`}
                       />
-                      {errors.password && <span>This field is required</span>}
+                      {errors.name && <span>This field is required</span>}
                       <button
                         type="submit"
                         id="create-member-btn"
@@ -122,7 +122,7 @@ const NewMember = () => {
                         Submit
                       </button>
                       <button
-                        type="button"
+                        type="submit"
                         onClick={closeModal}
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
