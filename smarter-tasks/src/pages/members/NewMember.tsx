@@ -12,33 +12,6 @@ type Inputs = {
   password: string;
 };
 
-// const NewMember = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [error, setError] = useState(null);
-
-//   const dispatchUsers = useUsersDispatch();
-
-//   const openModal = () => {
-//     setIsOpen(true);
-//   };
-//   const closeModal = () => {
-//     setIsOpen(false);
-//   };
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm<Inputs>();
-//   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-//     const { name, email, password } = data;
-//     const response = await addUser(dispatchUsers, { name, email, password });
-//     if (response.ok) {
-      
-//       setIsOpen(false);
-//     } else {
-//       setError(response.error as React.SetStateAction<null>);
-//     }
-//   };
 const NewMember = () => { 
   const [isOpen, setIsOpen] = useState(false);
 
