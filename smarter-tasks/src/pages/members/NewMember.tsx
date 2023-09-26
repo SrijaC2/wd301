@@ -1,8 +1,9 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import { useUsersDispatch } from "../../context/members/context";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { addUser } from "../../context/members/actions";
-import { useUsersDispatch } from "../../context/members/context";
+
 
 type Inputs = {
   name: string;
@@ -13,27 +14,26 @@ type Inputs = {
 const NewMember = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(null);
-  const dispatchMembers = useUsersDispatch();
+
+  const dispatchUsers = useUsersDispatch();
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { name, email, password } = data;
-
-    const response = await addUser(dispatchMembers, { name, email, password });
+    const response = await addUser(dispatchUsers, { name, email, password });
     if (response.ok) {
+      
       setIsOpen(false);
-      window.location.reload();
     } else {
       setError(response.error as React.SetStateAction<null>);
     }
@@ -78,7 +78,7 @@ const NewMember = () => {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Create new member
+                    Create new user
                   </Dialog.Title>
                   <div className="mt-2">
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -86,7 +86,7 @@ const NewMember = () => {
                       <input
                         type="text"
                         id="name"
-                        placeholder="Enter name"
+                        placeholder="Enter name.."
                         autoFocus
                         {...register("name", { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
@@ -96,7 +96,7 @@ const NewMember = () => {
                       <input
                         type="email"
                         id="email"
-                        placeholder="Enter email"
+                        placeholder="Enter email..."
                         autoFocus
                         {...register("email", { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
@@ -138,6 +138,6 @@ const NewMember = () => {
       </Transition>
     </>
   );
-};
+}
 
 export default NewMember;
