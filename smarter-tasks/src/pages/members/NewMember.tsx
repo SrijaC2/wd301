@@ -1,8 +1,9 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { useUsersDispatch } from "../../context/members/context";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { addUser } from "../../context/members/actions";
+import { useUsersDispatch } from "../../context/members/context";
 
 
 type Inputs = {
@@ -11,29 +12,58 @@ type Inputs = {
   password: string;
 };
 
-const NewMember = () => {
+// const NewMember = () => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [error, setError] = useState(null);
+
+//   const dispatchUsers = useUsersDispatch();
+
+//   const openModal = () => {
+//     setIsOpen(true);
+//   };
+//   const closeModal = () => {
+//     setIsOpen(false);
+//   };
+//   const {
+//     register,
+//     handleSubmit,
+//     formState: { errors },
+//   } = useForm<Inputs>();
+//   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+//     const { name, email, password } = data;
+//     const response = await addUser(dispatchUsers, { name, email, password });
+//     if (response.ok) {
+      
+//       setIsOpen(false);
+//     } else {
+//       setError(response.error as React.SetStateAction<null>);
+//     }
+//   };
+const NewMember = () => { 
   const [isOpen, setIsOpen] = useState(false);
+
   const [error, setError] = useState(null);
 
   const dispatchUsers = useUsersDispatch();
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-  const closeModal = () => {
-    setIsOpen(false);
-  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { name, email, password } = data;
-    const response = await addUser(dispatchUsers, { name, email, password });
+
+    const response = await addUser(dispatchUsers, { name, email, password }); 
     if (response.ok) {
-      
       setIsOpen(false);
+      
     } else {
       setError(response.error as React.SetStateAction<null>);
     }

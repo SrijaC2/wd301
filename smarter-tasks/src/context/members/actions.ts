@@ -29,6 +29,7 @@ export const addUser = async (dispatch: any, args: any) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+
       body: JSON.stringify(args),
     });
     if (!response.ok) {
@@ -38,7 +39,7 @@ export const addUser = async (dispatch: any, args: any) => {
     if (data.errors && data.errors.length > 0) {
       return { ok: false, error: data.errors[0].message };
     }
-    dispatch({ type: "ADD_USERS_SUCCESS", payload: data });
+    dispatch({ type: "ADD_USER_SUCCESS", payload: data.user });
     return { ok: true };
   } catch (error) {
     console.error("Operation failed:", error);
