@@ -61,6 +61,18 @@ const TaskDetails = () => {
     if (projectID && taskID) fetchComments(commentsDispatch, projectID, taskID);
   }, [commentsDispatch, projectID, taskID]);
 
+  const getDate = (date: Date): string => {
+    const newDate = new Date(date);
+    return `${newDate.toLocaleDateString("en-In")} ${newDate.toLocaleTimeString(
+      "en-In",
+    )}`;
+  };
+
+  const getuser = (owner: number) => {
+    const user = memberState?.users.filter((member) => member.id === owner)[0];
+    return user?.name;
+  };
+
   const [selectedPerson, setSelectedPerson] = useState(
     selectedTask.assignedUserName ?? ""
   );
@@ -101,25 +113,16 @@ const TaskDetails = () => {
 
   // Function to create a new comment
   const handleCreateComment = (commentText: string) => {
-    const userString = localStorage.getItem("userData");
-    if (userString) {
-      const userObject = JSON.parse(userString);
-      const name = userObject.name;
-      if (taskID){
         const comment = {
           description: commentText,
-          task_id: parseInt(taskID, 10),
-          owner: userObject.id, // Replace with the actual user ID or authentication logic
-          userName: name, // Replace with the actual user's name or authentication logic
-          timestamp: new Date().toISOString(), // Current timestamp
+          // task_id: parseInt(taskID, 10),
+          // owner: userObject.id, // Replace with the actual user ID or authentication logic
+          // userName: name, // Replace with the actual user's name or authentication logic
+          // timestamp: new Date().toISOString(), // Current timestamp
         };
         console.log(comment);
       if(projectID && taskID)
       createComment(commentsDispatch, projectID, taskID, comment);
-      }
-      
-      
-    }
   };
 
   return (
@@ -260,7 +263,9 @@ const TaskDetails = () => {
                                 className="comment bg-gray-100 p-3 rounded-lg shadow-md"
                               >
                                 <div className="text-gray-600">
-                                  {comment.description}
+                                  <p className="m-2">{comment.description}</p>
+                                  <p className="m-2">{getDate(comment.createdAt)}</p>
+                                  <p className="m-2">{getuser(comment.owner)}</p>
                                 </div>
                               </div>
                             ))}

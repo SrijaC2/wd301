@@ -4,17 +4,25 @@ export interface Comment {
   description: string;
   task_id: number;
   owner: number;
-  userName: string; // Name of the user who made the comment
-  timestamp: string; // Formatted timestamp of when the comment was made
+  project_id: number;
+  updatedAt: Date;
+  createdAt: Date;
+  user: User;
 }
 
 export type CommentPayload = {
   description: string;
-  task_id: number;
-  owner: number;
-  userName: string; 
-  timestamp: string;
+  // task_id: number;
+  // owner: number;
+  // userName: string; 
+  // timestamp: string;
 };
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
 // TaskListState with comment-related properties
 export interface CommentListState {
@@ -40,5 +48,5 @@ export type CommentActions =
   | { type: CommentAvailableAction.FETCH_COMMENTS_SUCCESS; payload: Comment[] }
   | { type: CommentAvailableAction.FETCH_COMMENTS_FAILURE; payload: string }
   | { type: CommentAvailableAction.CREATE_COMMENT_REQUEST }
-  | { type: CommentAvailableAction.CREATE_COMMENT_SUCCESS }
+  | { type: CommentAvailableAction.CREATE_COMMENT_SUCCESS ,payload: Comment}
   | { type: CommentAvailableAction.CREATE_COMMENT_FAILURE; payload: string };

@@ -66,8 +66,9 @@ export const createComment = async (
     if (!response.ok) {
       throw new Error("Failed to create comment");
     }
-
-    dispatch({ type: CommentAvailableAction.CREATE_COMMENT_SUCCESS });
+    const data2 = await response.json();
+    
+    dispatch({ type: CommentAvailableAction.CREATE_COMMENT_SUCCESS, payload: data2 });
     // You may choose to refresh comments after creating a new one
     console.log("comment created");
     fetchComments(dispatch, projectID, taskID);

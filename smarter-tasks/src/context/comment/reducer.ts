@@ -33,7 +33,7 @@ export const commentReducer: Reducer<CommentListState, CommentActions> = (
     case CommentAvailableAction.CREATE_COMMENT_REQUEST:
       return { ...state, isLoading: true };
     case CommentAvailableAction.CREATE_COMMENT_SUCCESS:
-      return { ...state, isLoading: false };
+      return { ...state, isLoading: false ,comments: [action.payload, ...state.comments],};
     case CommentAvailableAction.CREATE_COMMENT_FAILURE:
       return {
         ...state,
