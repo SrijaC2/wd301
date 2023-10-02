@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import { API_ENDPOINT } from "../../config/constants";
 import { CommentAvailableAction, CommentActions } from "./types";
-import { Comment } from "./types";
+import { CommentPayload } from "./types";
 
 // Action to fetch comments for a specific task
 // Action to fetch comments for a specific task and sort them in reverse chronological order
@@ -46,7 +46,7 @@ export const createComment = async (
   dispatch: Dispatch<CommentActions>,
   projectID: string,
   taskID: string,
-  comment: Comment
+  comment: CommentPayload
 ) => {
   const token = localStorage.getItem("authToken") ?? "";
   try {

@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Dialog, Transition, Listbox } from "@headlessui/react";
-import React, { Fragment, useState, useEffect } from "react";
+import  { Fragment, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useTasksDispatch, useTasksState } from "../../context/task/context";
@@ -67,7 +68,7 @@ const TaskDetails = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<TaskFormUpdatePayload>({
     defaultValues: {
       title: selectedTask.title,
@@ -104,15 +105,20 @@ const TaskDetails = () => {
     if (userString) {
       const userObject = JSON.parse(userString);
       const name = userObject.name;
-      const comment = {
-        description: commentText,
-        task_id: taskID,
-        owner: userObject.id, // Replace with the actual user ID or authentication logic
-        userName: name, // Replace with the actual user's name or authentication logic
-        timestamp: new Date().toISOString(), // Current timestamp
-      };
-      console.log(comment);
+      if (taskID){
+        const comment = {
+          description: commentText,
+          task_id: parseInt(taskID, 10),
+          owner: userObject.id, // Replace with the actual user ID or authentication logic
+          userName: name, // Replace with the actual user's name or authentication logic
+          timestamp: new Date().toISOString(), // Current timestamp
+        };
+        console.log(comment);
+      if(projectID && taskID)
       createComment(commentsDispatch, projectID, taskID, comment);
+      }
+      
+      
     }
   };
 
@@ -272,8 +278,8 @@ const TaskDetails = () => {
                           id="addCommentBtn"
                           type="button"
                           onClick={() => {
-                            const commentText =
-                              document.getElementById("commentBox")?.value;
+                            const commentBox = document.getElementById("commentBox") as HTMLInputElement | null;
+                            const commentText = commentBox?.value;
                             if (commentText) {
                               handleCreateComment(commentText);
                             }

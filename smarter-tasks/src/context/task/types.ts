@@ -43,11 +43,11 @@ export interface TaskListState {
   // A type to hold dispatch actions in a context.
   export type TasksDispatch = React.Dispatch<TaskActions>;
 
-  export type TaskDetailsPayload = {
-    title: string;
-    description: string;
-    dueDate: string;
-  };
+  // export type TaskDetailsPayload = {
+  //   title: string;
+  //   description: string;
+  //   dueDate: string;
+  // };
   export type AvailableColumns = "pending" | "in_progress" | "done";
   export type ColumnData = {
     id: string;

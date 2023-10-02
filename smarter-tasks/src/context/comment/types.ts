@@ -8,6 +8,14 @@ export interface Comment {
   timestamp: string; // Formatted timestamp of when the comment was made
 }
 
+export type CommentPayload = {
+  description: string;
+  task_id: number;
+  owner: number;
+  userName: string; 
+  timestamp: string;
+};
+
 // TaskListState with comment-related properties
 export interface CommentListState {
   isLoading: boolean;

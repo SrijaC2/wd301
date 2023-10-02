@@ -80,7 +80,7 @@ const NewProject = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                       {error && <span>{error}</span>}
                       <input
-                        name="name"
+                        // name="name"
                         type="text"
                         placeholder="Enter project name..."
                         autoFocus

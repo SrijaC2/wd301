@@ -17,7 +17,7 @@ const NewTask = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<TaskDetailsPayload>();
   const projectState = useProjectsState();
   const taskDispatch = useTasksDispatch();
@@ -36,6 +36,7 @@ const NewTask = () => {
   const onSubmit: SubmitHandler<TaskDetailsPayload> = async (data) => {
     try {
       // Invoke the actual API and create a task.
+      console.log(data)
       addTask(taskDispatch, projectID ?? "", data);
       closeModal();
     } catch (error) {
@@ -82,7 +83,7 @@ const NewTask = () => {
                         required
                         placeholder="Enter title"
                         autoFocus
-                        name="title"
+                        // name="title"
                         id="title"
                         // Register the title field
                         {...register("title", { required: true })}
@@ -93,7 +94,7 @@ const NewTask = () => {
                         required
                         placeholder="Enter description"
                         autoFocus
-                        name="description"
+                        // name="description"
                         id="description"
                         // register the description field
                         {...register("description", { required: true })}
@@ -104,7 +105,7 @@ const NewTask = () => {
                         required
                         placeholder="Enter due date"
                         autoFocus
-                        name="dueDate"
+                        // name="dueDate"
                         id="dueDate"
                         // register due date field
                         {...register("dueDate", { required: true })}
