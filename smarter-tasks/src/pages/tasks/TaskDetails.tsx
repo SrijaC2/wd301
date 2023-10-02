@@ -231,21 +231,9 @@ const TaskDetails = () => {
                           ))}
                         </Listbox.Options>
                       </Listbox>
-                      <button
-                        type="submit"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 mr-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      >
-                        Update
-                      </button>
-                      <button
-                        type="submit"
-                        onClick={closeModal}
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      >
-                        Cancel
-                      </button>
-                    </form>
-                    <div className="mt-4">
+
+
+                      <div className="mt-4">
                       <h3 className="text-lg font-medium leading-6 text-gray-900">
                         Comments
                       </h3>
@@ -289,12 +277,29 @@ const TaskDetails = () => {
                               handleCreateComment(commentText);
                             }
                           }}
-                          className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                          className="mb-4 inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                         >
                           Add Comment
                         </button>
                       </div>
                     </div>
+
+
+                      <button
+                        type="submit"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 mr-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      >
+                        Update
+                      </button>
+                      <button
+                        type="submit"
+                        onClick={closeModal}
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      >
+                        Cancel
+                      </button>
+                    </form>
+                   
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
