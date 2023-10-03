@@ -12,10 +12,6 @@ export interface Comment {
 
 export type CommentPayload = {
   description: string;
-  // task_id: number;
-  // owner: number;
-  // userName: string; 
-  // timestamp: string;
 };
 
 interface User {
