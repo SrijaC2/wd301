@@ -21,3 +21,9 @@ The following tasks were completed as part of the curriculum:
 - ✅ Implement members page in your application
 - ✅ Adding comments to task
 - ✅ Make React application production ready
+
+### Initial Stage (hello-react)
+<img width="600" height="500" alt="Image" src="https://github.com/user-attachments/assets/fcaf625d-e771-46dd-b9d2-2f6f7346bafc" />
+
+### Final Stage (smarter-tasks)
+<img width="600" height="500" alt="Image" src="https://github.com/user-attachments/assets/342011b8-da04-4b32-bc5b-7501828a64b7" />
