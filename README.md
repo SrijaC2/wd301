@@ -21,4 +21,3 @@ The following tasks were completed as part of the curriculum:
 - ✅ Implement members page in your application
 - ✅ Adding comments to task
 - ✅ Make React application production ready
- 
